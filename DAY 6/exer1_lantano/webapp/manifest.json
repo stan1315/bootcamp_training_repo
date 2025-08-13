@@ -1,0 +1,112 @@
+{
+  "_version": "1.65.0",
+  "sap.app": {
+    "id": "com.training.exer1lantano",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.18.4",
+      "toolsId": "85c1cfaf-e701-4e9e-8da6-cede0e63364f"
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.138.1",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "com.training.exer1lantano.i18n.i18n"
+        }
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "transition": "slide",
+        "type": "View",
+        "viewType": "XML",
+        "path": "com.training.exer1lantano.view",
+        "async": true,
+        "viewPath": "com.training.exer1lantano.view"
+      },
+      "routes": [
+        {
+          "name": "RouteMainView",
+          "pattern": ":?query:",
+          "target": ["TargetMainView"]
+        },
+        {
+          "name": "RouteReviewPage",
+          "pattern": "Review/{firstName}",
+          "target": ["TargetReviewPage"]
+        }
+      ],
+      "targets": {
+        "TargetMainView": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "MainView",
+          "viewName": "MainView"
+      },
+          "TargetReviewPage": {
+          "viewId": "ReviewPage",
+          "viewName": "ReviewPage"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "com.training.exer1lantano.view.App",
+      "type": "XML",
+      "id": "App",
+      "async": true
+    }
+  },
+  "sap.cloud": {
+    "public": true,
+    "service": "comtrainingexer1lantano"
+  }
+}
