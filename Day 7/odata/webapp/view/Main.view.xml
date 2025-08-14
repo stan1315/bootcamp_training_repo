@@ -1,57 +1,51 @@
 <mvc:View controllerName="sapips.training.odata.controller.Main"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m">
-<Page id="page" title="{i18n>appTitle}">vie
-    <Panel
-      xmlns="sap.m" width="auto" expandable="false" expanded="true" id="panel0" backgroundDesign="Transparent">
-      <headerToolbar>
-        <Toolbar id="toolbar1" design="Transparent">
-          <Title id="title0" text="Products"/>
-        </Toolbar>
-      </headerToolbar>
-      <content>
-        <Text text="Wide range of available products" id="text5"/>
-      </content>
-    </Panel>
-    <Table
-      id="listProduct"
-      items="{
-        path: '/Products',
-        sorter: {
-          path: 'ProductName',
-          descending: false
-        }
-      }">
-      <columns>
-        <Column id="productColumn">
-          <header>
-            <Label id="_IDGenLabel1" text="Product" />
-          </header>
-        </Column>
-        <Column id="supplierColumn">
-          <header>
-            <Label id="_IDGenLabel2" text="Supplier ID" />
-          </header>
-        </Column>
-        <Column id="priceColumn">
-          <header>
-            <Label id="_IDGenLabel3" text="Price" />
-          </header>
-        </Column>
-      </columns>
-      <items>
-        <ColumnListItem id="_IDGenColumnListItem">
-          <cells>
-            <ObjectIdentifier id="_IDGenObjectIdentifier"
-              title="{ProductName}"
-              text="Product ID: {ProductID}" />
-            <Text id="_IDGenText" text="{SupplierID}" />
-            <ObjectIdentifier id="_IDGenObjectIdentifier1"
-              title="{UnitPrice}"
-              text="{QuantityPerUnit}" />
-          </cells>
-        </ColumnListItem>
-      </items>
-    </Table>
-  </Page>
+<Page id="page" title="{i18n>title}">
+        <content>
+            <Panel xmlns="sap.m" width="auto" expandable="false" expanded="true" id="panel0" backgroundDesign="Transparent">
+                <headerToolbar>
+                    <Toolbar id="toolbar1" design="Transparent">
+                        <Title id="title0" text="{i18n>txtProducts}" />
+                    </Toolbar>
+                </headerToolbar>
+                <content>
+                    <Text text="{i18n>txtRangeProd}" id="text"/>
+                </content>
+            </Panel>
+ 
+            <Table noDataText="{i18n>tblNoData}" id="tbl_products" items="{path: '/Products', sorter: {path: 'ProductName', descending: false},
+                filters: [{ path: 'Discontinued', operator: 'EQ', value1: false}]}">
+                <items>
+                    <ColumnListItem type="Active" id="item0">
+                        <cells>
+                            <ObjectIdentifier id="obj_colProdName" title="{ProductName}" text="Product ID: {ProductID}"/>
+                            <Text id="txt_suppID" text="{SupplierID}"/>
+                            <ObjectIdentifier id="obj_colPrice" title="{UnitPrice}" text="{QuantityPerUnit}"/>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+ 
+                <columns >
+                    <Column id="col_prodName" sortIndicator="None">
+                        <header>
+                            <Label text="{i18n>lblProducts}" id="prodName"/>
+                        </header>
+                    </Column>
+ 
+                    <Column id="col_suppID">
+                        <header>
+                            <Label text="{i18n>lblSuppID}" id="suppID"/>
+                        </header>
+                    </Column>
+ 
+                    <Column id="col_price">
+                        <header>
+                            <Label text="{i18n>lblPrice}" id="rice"/>
+                        </header>
+                    </Column>
+                </columns>
+            </Table>
+        </content>
+    </Page>
 </mvc:View>
